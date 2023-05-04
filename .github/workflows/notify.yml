@@ -1,0 +1,35 @@
+name: notify
+
+on:
+  pull_request:
+    branches:
+      - master
+      - release*
+
+## it's so bad, maybe could write by self
+jobs:
+  dingtalk:
+    - name: dingtalk robot message
+      uses: fifsky/dingtalk-action@master
+      with:
+        url: ${{ secrets.DINGTALK_WEBHOOK}}
+        type: markdown
+        content: |
+          # Tips
+          ## Hello
+          > from github action message
+          > ^_^
+
+  lark:
+    - name: Notify to IM
+      uses: echoings/actions.notify@v0.1.0
+      with:
+        plat_type: 'Lark'
+        notify_title: 'Project Updated'
+        notify_message: 'Project updated, please check projects online status'
+      env:
+        NOTIFY_WEBHOOK: ${{ secrets.NOTIFY_WEBHOOK }}
+        NOTIFY_SIGNKEY: ${{ secrets.NOTIFY_SIGNKEY }}
+        LARK_APP_ID: ${{ secrets.LARK_APP_ID }}
+        # spelling error
+        LARK_APP_SECRECT: ${{ secrets.LARK_APP_SECRECT }}
