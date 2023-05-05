@@ -1,4 +1,4 @@
-name: cd
+name: CD
 
 
 # trigger on merged pull requests or push to master branch
@@ -11,7 +11,7 @@ on:
       - master
 
 jobs:
-  cd:
+  cd-job:
     if: github.event.pull_request.merged == true
     name: Continuous Deployment
     runs-on: ubuntu-latest
@@ -32,5 +32,5 @@ jobs:
         run: echo "notify error"
 
       - name: Notify on success
-        if: failure()
+        if: success()
         run: echo "notify success"
