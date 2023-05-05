@@ -32,5 +32,5 @@ jobs:
         run: echo "notify error"
 
       - name: Notify on success
-        if: failure()
+        if: success()
         run: echo "notify success"
