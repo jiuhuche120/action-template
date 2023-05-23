@@ -5,7 +5,7 @@ TEST_PKGS := $(shell go list ./... | grep -v 'mock_*' | grep -v 'tester' | grep 
 ## make test: Run go unittest
 unittest:
 	@go test -short -coverprofile cover.out -covermode=atomic ${TEST_PKGS}
-	@cat cover.out | grep -v "pb.go" >> coverage.txt"
+	@cat cover.out | grep -v "pb.go" >> coverage.txt
 
 
 publish-binary:
